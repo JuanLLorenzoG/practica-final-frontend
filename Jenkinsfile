@@ -63,10 +63,13 @@ spec:
 
 		stage("Build"){
 			steps {
+				def packageJSON = readJSON file: 'package.json'
+				def packageJSONVersion = packageJSON.version
+				echo packageJSONVersion
 				// Install dependencies
 				sh 'npm install'
 				// Build assets with eg. webpack
-				sh 'npm run build'
+				sh "VERSION=${packageJSONVersion} npm run build"
 			}
 		}
 
@@ -81,13 +84,7 @@ spec:
 		}
 
 		stage("Build & Push"){
-			steps { 
-				container('super-nodo'){
-					script {
-						pom = readMavenPom(file: 'pom.xml')
-						version = pom.version
-					}
-				}
+			steps {
 				container('kaniko'){
 					echo "Aqui se construye la imagen"
 					script {
