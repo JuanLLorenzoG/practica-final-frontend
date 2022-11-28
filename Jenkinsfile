@@ -28,7 +28,7 @@ spec:
     tty: true
   volumes:
   - name: docker-socket-volume
-SION for cla    hostPath:
+    hostPath:
       path: /var/run/docker.sock
       type: Socket
     command:
