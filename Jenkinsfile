@@ -96,7 +96,7 @@ spec:
 							${command}
 							set -x
 							""")
-							echo "VERSION"
+							echo "${packageJSONVersion}"
 							sh "/kaniko/executor --context `pwd` --destination ${DOCKER_IMAGE_NAME}:${packageJSONVersion} --cleanup"
 						}
 					}
