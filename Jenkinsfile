@@ -77,7 +77,7 @@ spec:
 			steps {
 			        script {
 					withSonarQubeEnv("sonarqube-server"){
-						sh 'npm run sonar -Dsonar.projectKey=practica-final-frontend -Dsonar.sources=. -Dsonar.host.url=http://192.168.49.4:9000 -Dsonar.login=sqp_cf9a7aac6899e922f8bddfae3c9a722e689a70c0'
+						sh 'set +x npm run sonar -Dsonar.projectKey=practica-final-frontend -Dsonar.sources=. -Dsonar.host.url=http://192.168.49.4:9000 -Dsonar.login=sqp_cf9a7aac6899e922f8bddfae3c9a722e689a70c0 set -x'
 					}
 				}
 			}
