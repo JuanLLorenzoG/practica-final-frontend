@@ -61,13 +61,15 @@ spec:
 
 		stage("Build"){
 			steps {
-				def packageJSON = readJSON file: 'package.json'
-				def packageJSONVersion = packageJSON.version
-				echo packageJSONVersion
-				// Install dependencies
-				sh 'npm install'
-				// Build assets with eg. webpack
-				sh "VERSION=${packageJSONVersion} npm run build"
+				script {
+					def packageJSON = readJSON file: 'package.json'
+					def packageJSONVersion = packageJSON.version
+					echo packageJSONVersion
+					// Install dependencies
+					sh 'npm install'
+					// Build assets with eg. webpack
+					sh "VERSION=${packageJSONVersion} npm run build"
+				}
 			}
 		}
 
