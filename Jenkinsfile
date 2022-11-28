@@ -1,5 +1,3 @@
-def version = ""
-def pom = ""
 pipeline {
 
     agent {
@@ -96,7 +94,7 @@ spec:
 							${command}
 							set -x
 							""")
-							sh "/kaniko/executor --context `pwd` --destination ${DOCKER_IMAGE_NAME}:${version} --cleanup"
+							sh "/kaniko/executor --context `pwd` --destination ${DOCKER_IMAGE_NAME}:${VERSION} --cleanup"
 						}
 					}
 				}
