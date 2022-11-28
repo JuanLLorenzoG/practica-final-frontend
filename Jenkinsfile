@@ -77,7 +77,7 @@ spec:
 			steps {
 			        script {
 					withSonarQubeEnv("sonarqube-server"){
-						sh 'npm run sonar-scanner'
+						sh 'npm run sonar'
 					}
 				}
 			}
