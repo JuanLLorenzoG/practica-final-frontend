@@ -76,7 +76,7 @@ spec:
 		stage("Quality Tests") {
 			steps {
 			        script {
-					withSonarQubeEnv("sonarqube-server"){
+					withSonarQubeEnv(credentialsId: "sonarqube-credentials", installationName: "sonarqube-server"){
 						sh 'npm run sonar'
 					}
 				}
