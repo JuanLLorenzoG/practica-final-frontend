@@ -68,7 +68,7 @@ spec:
 					// Install dependencies
 					sh 'npm install'
 					// Build assets with eg. webpack
-					sh "VERSION=${packageJSONVersion} npm run build"
+					sh 'npm run build'
 				}
 			}
 		}
@@ -97,7 +97,7 @@ spec:
 							set -x
 							""")
 							echo "VERSION"
-							sh "/kaniko/executor --context `pwd` --destination ${DOCKER_IMAGE_NAME}:${VERSION} --cleanup"
+							sh "/kaniko/executor --context `pwd` --destination ${DOCKER_IMAGE_NAME}:${packageJSONVersion} --cleanup"
 						}
 					}
 				}
