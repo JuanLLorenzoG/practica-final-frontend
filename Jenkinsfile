@@ -28,7 +28,7 @@ spec:
     tty: true
   volumes:
   - name: docker-socket-volume
-    hostPath:
+SION for cla    hostPath:
       path: /var/run/docker.sock
       type: Socket
     command:
@@ -96,6 +96,7 @@ spec:
 							${command}
 							set -x
 							""")
+							echo "VERSION"
 							sh "/kaniko/executor --context `pwd` --destination ${DOCKER_IMAGE_NAME}:${VERSION} --cleanup"
 						}
 					}
