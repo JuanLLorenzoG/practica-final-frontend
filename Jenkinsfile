@@ -76,8 +76,12 @@ spec:
 		stage("Quality Tests") {
 			steps {
 			        script {
-					withSonarQubeEnv(credentialsId: "sonarqube-credentials", installationName: "sonarqube-server"){
-						sh 'npm run sonar'
+					withSonarQubeEnv("sonarqube-server"){
+						sonar-scanner \
+						-Dsonar.projectKey=practica-final-frontend \
+						-Dsonar.sources=. \
+						-Dsonar.host.url=http://192.168.49.4:9000 \
+						-Dsonar.login=sqp_cf9a7aac6899e922f8bddfae3c9a722e689a70c0
 					}
 				}
 			}
