@@ -64,9 +64,6 @@ spec:
 		stage("Build"){
 			steps {
 				script {
-					packageJSON = readJSON file: 'package.json'
-					packageJSONVersion = packageJSON.version
-					echo packageJSONVersion
 					// Install dependencies
 					sh 'npm install'
 					// Build assets with eg. webpack
@@ -90,6 +87,11 @@ spec:
 				container('kaniko'){
 					echo "Aqui se construye la imagen"
 					script {
+						container('super-nodo'){
+							packageJSON = readJSON file: 'package.json'
+							packageJSONVersion = packageJSON.version
+							echo packageJSONVersion
+						}
 						withCredentials([usernamePassword(credentialsId: "jenkins_dockerhub", passwordVariable: "jenkins_dockerhubPassword", usernameVariable: "jenkins_dockerhubUser")]) {
 							AUTH = sh(script: """echo -n "${env.jenkins_dockerhubUser}:${env.jenkins_dockerhubPassword}" | base64""", returnStdout: true).trim()
 							command = """echo '{"auths": {"https://index.docker.io/v1/": {"auth": "${AUTH}"}}}' >> /kaniko/.docker/config.json"""
