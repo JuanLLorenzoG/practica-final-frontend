@@ -76,7 +76,7 @@ spec:
 			steps {
 			        script {
 					withSonarQubeEnv(credentialsId: "sonarqube-credentials-js", installationName: "sonarqube-server"){
-						sh 'npm run sonar
+						sh 'npm run sonar'
 					}
 				}
 			}
