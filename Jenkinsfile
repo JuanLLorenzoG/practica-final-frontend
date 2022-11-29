@@ -34,7 +34,7 @@ spec:
       path: /var/run/docker.sock
       type: Socket
     command:
-/home/jenkins/agent/workspace/Practica_Final_Frontend_develop/functional-e2e-test). Please verify you invoked Maven from the correct directory. -> [Help     - sleep
+    - sleep
     args:
     - infinity
 '''
