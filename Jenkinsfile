@@ -34,7 +34,7 @@ spec:
       path: /var/run/docker.sock
       type: Socket
     command:
-    - sleep
+/home/jenkins/agent/workspace/Practica_Final_Frontend_develop/functional-e2e-test). Please verify you invoked Maven from the correct directory. -> [Help     - sleep
     args:
     - infinity
 '''
@@ -64,7 +64,7 @@ spec:
 		stage("Build"){
 			steps {
 				script {
-					// Install dependencies
+					// Install dependencies/home/jenkins/agent/workspace/Practica_Final_Frontend_develop/functional-e2e-test). Please verify you invoked Maven from the correct directory. -> [Help 
 					sh 'npm install'
 					// Build assets with eg. webpack
 					sh 'npm run build'
@@ -129,7 +129,7 @@ spec:
 				sh 'git clone https://github.com/JuanLLorenzoG/functional-e2e-test selenium --branch test-implementation'
 				sh 'ls -la'
 				echo "Aqui va Selenium"
-				dir('functional-e2e-test'){
+				dir('selenium') {
 					script {
 						sh 'ls'
 						sh 'mvn clean verify -Dwebdriver.remote.url=https://{ngrokUrl}/wd/hub -Dwebdriver.remote.driver=chrome -Dchrome.switches="--no-sandbox,--ignore-certificate-errors,--homepage=about:blank,--no-first-run,--headless"'
