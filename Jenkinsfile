@@ -127,11 +127,9 @@ spec:
 		                    sh 'rm -r selenium'
 	                    }
 				sh 'git clone https://github.com/JuanLLorenzoG/functional-e2e-test selenium --branch test-implementation'
-				sh 'ls -la'
 				echo "Aqui va Selenium"
 				dir('selenium') {
 					script {
-						sh 'ls'
 						sh 'mvn clean verify -Dwebdriver.remote.url=https://{ngrokUrl}/wd/hub -Dwebdriver.remote.driver=chrome -Dchrome.switches="--no-sandbox,--ignore-certificate-errors,--homepage=about:blank,--no-first-run,--headless"'
 					}
 				}
