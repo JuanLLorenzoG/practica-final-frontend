@@ -127,6 +127,8 @@ spec:
 		                    sh 'rm -r selenium'
 	                    }
 				echo "Aqui va Selenium"
+				sh 'kubectl apply -f configuracion/kubernetes-deployment/standalone-chrome/manifest.yml -n default --kubeconfig=configuracion/kubernetes-config/config'
+				sleep 30 //seconds
 	                }
 
 	            }
