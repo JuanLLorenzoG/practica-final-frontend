@@ -126,6 +126,7 @@ spec:
 	                    if(fileExists("selenium")){
 		                    sh 'rm -r selenium'
 	                    }
+				sh 'git clone https://github.com/JuanLLorenzoG/functional-e2e-test selenium --branch test-implementation'
 				echo "Aqui va Selenium"
 				sh 'mvn clean verify -Dwebdriver.remote.url=https://{ngrokUrl}/wd/hub -Dwebdriver.remote.driver=chrome -Dchrome.switches="--no-sandbox,--ignore-certificate-errors,--homepage=about:blank,--no-first-run,--headless"'
 	                }
