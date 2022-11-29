@@ -120,20 +120,33 @@ spec:
 			}
 		}
 
-	        stage ("Selenium") {
+	        stage ('Run functional test e2e') {
 	            steps{
 	                script {
 	                    if(fileExists("selenium")){
 		                    sh 'rm -r selenium'
 	                    }
 				echo "Aqui va Selenium"
-				sh 'kubectl apply -f configuracion/kubernetes-deployment/standalone-chrome/manifest.yml -n default --kubeconfig=configuracion/kubernetes-config/config'
-				sleep 30 //seconds
+				sh 'mvn clean verify -Dwebdriver.remote.url=https://{ngrokUrl}/wd/hub -Dwebdriver.remote.driver=chrome -Dchrome.switches="--no-sandbox,--ignore-certificate-errors,--homepage=about:blank,--no-first-run,--headless"'
 	                }
 
 	            }
 	        }
 	        
+		stage('Generate Cucumber Report') {
+			steps{
+				sh 'mvn serenity:aggregate'
+  
+				publishHTML(target: [
+					reportName: 'Serenity',
+					reportDir:  'target/site/serenity',
+					reportFiles: 'index.html',
+					keepAll: true,
+					alwaysLinkToLastBuild: true,
+					allowMissing: false
+				])
+			}
+		}
 	}
 
 	post {
