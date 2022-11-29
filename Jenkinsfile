@@ -1,3 +1,5 @@
+def packageJSON = ""
+def packageJSONVersion = ""
 pipeline {
 
     agent {
@@ -62,8 +64,8 @@ spec:
 		stage("Build"){
 			steps {
 				script {
-					def packageJSON = readJSON file: 'package.json'
-					def packageJSONVersion = packageJSON.version
+					packageJSON = readJSON file: 'package.json'
+					packageJSONVersion = packageJSON.version
 					echo packageJSONVersion
 					// Install dependencies
 					sh 'npm install'
@@ -96,7 +98,7 @@ spec:
 							${command}
 							set -x
 							""")
-							sh '/kaniko/executor --context `pwd` --destination $DOCKER_IMAGE_NAME:$(echo packageJSONVersion) --cleanup'
+							sh '/kaniko/executor --context `pwd` --destination $DOCKER_IMAGE_NAME:$packageJSONVersion --cleanup'
 						}
 					}
 				}
