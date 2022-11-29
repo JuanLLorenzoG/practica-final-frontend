@@ -22,7 +22,7 @@ spec:
     tty: true
   - name: newman
     image: postman/newman:latest
-d the following variable(s):     command:
+    command:
     - cat
     imagePullPolicy: IfNotPresent
     tty: true
