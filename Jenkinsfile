@@ -100,7 +100,7 @@ spec:
 							${command}
 							set -x
 							""")
-							sh '/kaniko/executor --context `pwd` --destination $DOCKER_IMAGE_NAME:$packageJSONVersion --cleanup'
+							sh "/kaniko/executor --context `pwd` --destination ${DOCKER_IMAGE_NAME}:${packageJSONVersion} --cleanup"
 						}
 					}
 				}
