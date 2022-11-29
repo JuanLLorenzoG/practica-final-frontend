@@ -76,10 +76,10 @@ spec:
 			steps {
 			        script {
 					withSonarQubeEnv("sonarqube-server"){
-						sh 'set +x npm run sonar \
+						sh 'npm run sonar \
 						-Dsonar.projectKey=practica-final-frontend \
 						-Dsonar.host.url=https://eleven-grapes-help-213-0-57-163.loca.lt \
-						-Dsonar.login=sqp_cf9a7aac6899e922f8bddfae3c9a722e689a70c0 set -x'
+						-Dsonar.login=sqp_cf9a7aac6899e922f8bddfae3c9a722e689a70c0'
 					}
 				}
 			}
