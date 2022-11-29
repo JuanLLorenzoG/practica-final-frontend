@@ -130,8 +130,10 @@ spec:
 				sh 'ls -la'
 				echo "Aqui va Selenium"
 				dir('functional-e2e-test'){
-					sh 'ls -la'
-					sh 'mvn clean verify -Dwebdriver.remote.url=https://{ngrokUrl}/wd/hub -Dwebdriver.remote.driver=chrome -Dchrome.switches="--no-sandbox,--ignore-certificate-errors,--homepage=about:blank,--no-first-run,--headless"'
+					script {
+						sh 'ls'
+						sh 'mvn clean verify -Dwebdriver.remote.url=https://{ngrokUrl}/wd/hub -Dwebdriver.remote.driver=chrome -Dchrome.switches="--no-sandbox,--ignore-certificate-errors,--homepage=about:blank,--no-first-run,--headless"'
+					}
 				}
 	                }
 
